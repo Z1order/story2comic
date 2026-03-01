@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story2Comic - Turn Your Stories Into Comics</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Story2Comic</h1>
+      <p class="tagline">Transform your stories into comic panels with AI</p>
+    </header>
+
+    <main>
+      <!-- Story Input Section -->
+      <section id="input-section" class="card">
+        <h2>Enter Your Story</h2>
+        <form id="story-form">
+          <div class="form-group">
+            <textarea
+              id="story-input"
+              placeholder="Once upon a time, in a bustling city filled with towering skyscrapers..."
+              rows="8"
+              maxlength="5000"
+              required
+            ></textarea>
+            <div class="char-count">
+              <span id="char-current">0</span> / 5000 characters
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="panel-count">Number of Panels:</label>
+            <div class="panel-selector">
+              <button type="button" class="panel-btn" data-count="4">4</button>
+              <button type="button" class="panel-btn active" data-count="6">6</button>
+              <button type="button" class="panel-btn" data-count="8">8</button>
+            </div>
+            <input type="hidden" id="panel-count" value="6">
+          </div>
+
+          <div class="form-group">
+            <label for="art-style">Art Style:</label>
+            <select id="art-style" class="style-select">
+              <option value="comic">Classic Comic Book</option>
+              <option value="manga">Manga / Anime</option>
+              <option value="pixar">Pixar / 3D Cartoon</option>
+              <option value="watercolor">Watercolor Painting</option>
+              <option value="noir">Noir / Black & White</option>
+              <option value="retro">Retro Pop Art</option>
+              <option value="fantasy">Fantasy Illustration</option>
+              <option value="minimal">Minimalist / Flat</option>
+            </select>
+          </div>
+
+          <button type="submit" id="generate-btn" class="btn-primary">
+            <span class="btn-text">Generate Comic</span>
+            <span class="btn-loading" hidden>
+              <span class="spinner"></span>
+              Generating...
+            </span>
+          </button>
+        </form>
+      </section>
+
+      <!-- Progress Section -->
+      <section id="progress-section" class="card" hidden>
+        <h2>Creating Your Comic</h2>
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <p class="progress-text" id="progress-text">Analyzing story...</p>
+        </div>
+      </section>
+
+      <!-- Comic Display Section -->
+      <section id="comic-section" class="card" hidden>
+        <div class="comic-header">
+          <h2>Your Comic</h2>
+          <button id="download-btn" class="btn-secondary">Download Comic</button>
+        </div>
+        <div id="comic-grid" class="comic-grid"></div>
+        <button id="new-comic-btn" class="btn-primary">Create Another Comic</button>
+      </section>
+
+      <!-- Error Section -->
+      <section id="error-section" class="card error-card" hidden>
+        <h2>Oops! Something went wrong</h2>
+        <p id="error-message"></p>
+        <button id="retry-btn" class="btn-primary">Try Again</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>Powered by AI - Free & Open Source</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
